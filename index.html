@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050b18">
+<meta name="description" content="DAL — приватный криптокабинет. Демонстрационный интерфейс для управления цифровыми активами.">
+<title>DAL — Your Crypto. Your Privacy.</title>
+<style>
+:root{color-scheme:dark;--bg:#050b18;--panel:#0a1426;--line:#1b2c49;--muted:#9fb2d0;--text:#f4f8ff;--blue:#13c8ff;--purple:#735cff;--green:#29d391}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#102e61 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer;color:inherit}
+.wrap{max-width:1240px;margin:auto;padding:0 22px}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #14213a;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-size:26px;font-weight:850;letter-spacing:.5px}.logo{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--purple));color:#061020;font-weight:950;font-size:23px;box-shadow:0 0 28px #168cff55}.tag{font-size:11px;color:var(--muted);font-weight:500;display:block;letter-spacing:0}
+nav{display:flex;gap:24px;color:#b8c8e3;font-size:13px}nav a:hover{color:var(--blue)}
+.actions{display:flex;gap:9px}.btn{border:1px solid #29466f;border-radius:12px;padding:11px 16px;background:#0b1930;font-weight:700}.btn.primary{border:0;background:linear-gradient(110deg,#08bdf2,#7455ff);box-shadow:0 7px 25px #276bff35}.btn:hover{filter:brightness(1.12)}
+.hero{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:30px;padding:62px 0 42px;min-height:440px}
+.pill{display:inline-flex;border:1px solid #147cb9;color:#4acbff;padding:6px 13px;border-radius:30px;font-size:12px;margin-bottom:18px}
+h1{font-size:clamp(38px,5vw,66px);line-height:1.03;letter-spacing:-2px;margin:0 0 18px}.gradient{background:linear-gradient(90deg,#0bd2f6,#627aff,#ad63ff);background-clip:text;color:transparent}
+.lead{font-size:18px;font-weight:650;margin:0 0 12px}.sub{color:var(--muted);max-width:490px;margin:0 0 25px}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}
+.dashboard{border:1px solid #244b7a;border-radius:20px;background:linear-gradient(145deg,#0c1a30,#050c18);padding:19px;box-shadow:0 20px 80px #005bff25;position:relative;overflow:hidden}
+.dash-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:17px}.coins{display:flex;gap:14px;color:#c6d8f2;font-size:12px}.coin{background:#0d203b;border:1px solid #1e3555;border-radius:10px;padding:8px}.dash-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.card{background:#091529;border:1px solid #1a2d4a;border-radius:13px;padding:15px;min-width:0}.muted{color:var(--muted);font-size:12px}.big{font-size:25px;font-weight:800;letter-spacing:-.5px}.positive{color:var(--green)}.chart{width:100%;height:120px;margin-top:10px}.trade-buttons{display:flex;gap:8px;margin:12px 0}.trade-buttons button{flex:1;border:1px solid #29466f;border-radius:8px;padding:8px;background:#0c1d36}.trade-buttons .buy{background:linear-gradient(90deg,#087fcf,#5c61ff);border:0}.asset-row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #172943;padding:10px 0;font-size:12px}.asset-row:last-child{border:0}.asset-name{display:flex;align-items:center;gap:8px}.coin-icon{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#142e53;font-weight:800}
+.features{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid #16243c;border-bottom:1px solid #16243c;padding:28px 0;margin:10px 0 28px}.feature{padding:12px 20px;border-right:1px solid #17243a}.feature:last-child{border:0}.feature-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#10294c;color:#56caff;font-size:23px;margin-bottom:13px}.feature h3{font-size:15px;margin:0 0 8px}.feature p{color:var(--muted);font-size:12px;margin:0}
+.lower{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px}.promo{border:1px solid #1c3557;border-radius:14px;background:linear-gradient(140deg,#09162b,#050d1b);padding:22px}.promo h2{font-size:20px;margin:0 0 8px}.promo p{font-size:13px;color:var(--muted);margin:0 0 15px}.smallbtn{border:1px solid #3563aa;border-radius:9px;padding:9px 12px;background:#0b1a31;font-size:12px;font-weight:700}.trust{display:flex;align-items:center;gap:18px;border:1px solid #1a3150;border-radius:14px;margin:20px 0 35px;padding:18px 22px;color:var(--muted);font-size:12px}.trust strong{color:#e7f2ff;font-size:14px}.trust .shield{font-size:30px;color:#5bcaff}
+footer{border-top:1px solid #17243a;padding:22px 0 35px;color:#8197b8;font-size:12px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.notice{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);max-width:min(620px,calc(100% - 28px));width:max-content;background:#12223a;border:1px solid #36547c;border-radius:12px;padding:12px 16px;box-shadow:0 12px 40px #0009;display:none;z-index:10;font-size:13px}
+@media(max-width:900px){nav{gap:12px}.hero{grid-template-columns:1fr;padding-top:40px}.hero-copy{max-width:650px}.features{grid-template-columns:repeat(2,1fr)}.feature:nth-child(2n){border-right:0}.lower{grid-template-columns:1fr 1fr}.lower .promo:first-child{grid-column:1/-1}}
+@media(max-width:600px){.wrap{padding:0 15px}header{height:66px}.brand{font-size:22px}.brand .tag{display:none}nav{display:none}.actions .login{display:none}.actions .btn{padding:9px 11px;font-size:12px}.hero{padding:38px 0 25px;gap:24px}h1{font-size:43px;letter-spacing:-1.5px}.lead{font-size:16px}.sub{font-size:14px}.dashboard{padding:12px}.dash-top{align-items:flex-start;flex-direction:column}.coins{gap:6px;flex-wrap:wrap}.dash-grid{grid-template-columns:1fr}.chart{height:95px}.features{grid-template-columns:1fr 1fr;padding:15px 0}.feature{padding:13px 10px}.feature-icon{width:40px;height:40px}.lower{grid-template-columns:1fr}.lower .promo:first-child{grid-column:auto}.trust{align-items:flex-start;flex-wrap:wrap;padding:15px}.big{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <a class="brand" href="#" aria-label="DAL главная"><span class="logo">D</span><span>DAL<span class="tag">Your Crypto. Your Privacy.</span></span></a>
+ <nav aria-label="Основная навигация"><a href="#home">Главная</a><a href="#trade">Торговля</a><a href="#wallet">Кошелёк</a><a href="#earn">Earn</a><a href="#academy">Академия</a><a href="#support">Поддержка</a></nav>
+ <div class="actions"><button class="btn login" data-demo="Вход в аккаунт появится после подключения защищённой авторизации.">Войти</button><button class="btn primary" data-demo="Регистрация пока демонстрационная: реальные аккаунты ещё не создаются.">Создать аккаунт</button></div>
+</header>
+<main id="home">
+<section class="hero">
+ <div class="hero-copy">
+  <span class="pill">Платформа нового поколения</span>
+  <h1>DAL — твой мир <span class="gradient">криптовалют</span></h1>
+  <p class="lead">Торгуй. Храни. Управляй. С приватностью по умолчанию.</p>
+  <p class="sub">Единое пространство для цифровых активов, где личные балансы и история сделок не публикуются другим пользователям.</p>
+  <div class="hero-buttons"><a class="btn primary" href="#trade">Открыть демо</a><a class="btn" href="#trust">Наши принципы</a></div>
+ </div>
+ <div class="dashboard" id="trade">
+  <div class="dash-top"><strong>◈ DAL <span class="muted">/ ДЕМО-КАБИНЕТ</span></strong><div class="coins"><span class="coin">₿ BTC <b>$68,432</b> <i class="positive">+2.4%</i></span><span class="coin">◆ ETH <b>$3,487</b> <i class="positive">+1.8%</i></span><span class="coin">₮ USDT <b>$1.00</b></span></div></div>
+  <div class="dash-grid">
+   <div class="card"><div class="muted">BTC / USDT · условные данные</div><div class="big">$68,432.12 <span class="positive" style="font-size:13px">+2.4%</span></div>
+    <svg class="chart" viewBox="0 0 420 120" preserveAspectRatio="none" aria-label="Декоративный демонстрационный график"><defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#09c9ff" stop-opacity=".3"/><stop offset="1" stop-color="#09c9ff" stop-opacity="0"/></linearGradient></defs><path d="M0 100 L25 82 L48 94 L73 60 L98 76 L122 53 L147 66 L170 38 L193 55 L215 47 L240 65 L263 32 L285 44 L310 20 L332 39 L357 18 L380 29 L400 8 L420 14 L420 120 L0 120Z" fill="url(#area)"/><path d="M0 100 L25 82 L48 94 L73 60 L98 76 L122 53 L147 66 L170 38 L193 55 L215 47 L240 65 L263 32 L285 44 L310 20 L332 39 L357 18 L380 29 L400 8 L420 14" fill="none" stroke="#20cfff" stroke-width="2.5"/></svg>
+    <div class="muted">График иллюстративный — не рыночные котировки.</div>
+   </div>
+   <div class="card"><div class="muted">Быстрая сделка · симуляция</div><div class="trade-buttons"><button class="buy" data-demo="Демо-покупка: торговые ордера пока не отправляются и средства не списываются.">Купить</button><button data-demo="Демо-продажа: торговые ордера пока не отправляются и средства не списываются.">Продать</button></div><label class="muted" for="amount">Сумма в USDT</label><input id="amount" type="number" min="1" max="100000" value="100" style="width:100%;margin:6px 0 12px;padding:10px;background:#071020;border:1px solid #29415f;border-radius:8px;color:white"><button class="btn primary" style="width:100%" data-demo="Это только прототип. Реальная торговля ещё не подключена.">Предпросмотр ордера</button><p class="muted">Реальные сделки недоступны в демо-версии.</p></div>
+   <div class="card" id="wallet"><strong>Мои активы</strong><div class="asset-row"><span class="asset-name"><span class="coin-icon">₿</span> Bitcoin (BTC)</span><span>0.2456 <span class="positive">+2.4%</span></span></div><div class="asset-row"><span class="asset-name"><span class="coin-icon">◆</span> Ethereum (ETH)</span><span>1.4321 <span class="positive">+1.8%</span></span></div><div class="asset-row"><span class="asset-name"><span class="coin-icon">₮</span> Tether (USDT)</span><span>2,500.00</span></div></div>
+   <div class="card"><strong>Последние действия</strong><div class="asset-row"><span>Покупка BTC</span><span class="muted">Демо</span></div><div class="asset-row"><span>Пополнение USDT</span><span class="muted">Демо</span></div><div class="asset-row"><span>Перевод ETH</span><span class="muted">Демо</span></div></div>
+  </div>
+ </div>
+</section>
+<section class="features" aria-label="Преимущества">
+ <article class="feature"><div class="feature-icon">◉</div><h3>Приватность</h3><p>Балансы и история сделок не показываются другим клиентам. Приватность не означает абсолютную анонимность.</p></article>
+ <article class="feature"><div class="feature-icon">⬡</div><h3>Защита аккаунта</h3><p>Проектируем 2FA, контроль доступа и подтверждение чувствительных действий.</p></article>
+ <article class="feature"><div class="feature-icon">ϟ</div><h3>Торговые инструменты</h3><p>Планируем графики, типы ордеров и понятную историю операций.</p></article>
+ <article class="feature"><div class="feature-icon">◎</div><h3>Доступ с разных устройств</h3><p>Интерфейс адаптирован для телефона, планшета и компьютера.</p></article>
+ <article class="feature"><div class="feature-icon">◇</div><h3>Обучение и поддержка</h3><p>Объяснения рисков, руководства и помощь пользователям.</p></article>
+</section>
+<section class="lower">
+ <article class="promo"><h2>Торгуй без лишней сложности</h2><p>В будущем — рыночные данные, графики и инструменты торговли после подключения проверенных провайдеров и торговой инфраструктуры.</p><button class="smallbtn" data-demo="Торговый модуль находится в разработке.">Изучить торговлю →</button></article>
+ <article class="promo" id="earn"><h2>DAL Earn <span class="pill" style="margin:0;padding:2px 7px">План</span></h2><p>Возможные продукты для цифровых активов будут рассматриваться только после оценки рисков и юридических требований.</p><button class="smallbtn" data-demo="DAL Earn не запущен; доходность не обещается.">Узнать больше →</button></article>
+ <article class="promo" id="academy"><h2>DAL Academy</h2><p>Учись безопасно обращаться с криптовалютой, понимать комиссии, волатильность и распространённые схемы мошенничества.</p><button class="smallbtn" data-demo="Обучающий раздел будет добавлен на следующем этапе.">Открыть академию →</button></article>
+</section>
+<section class="trust" id="trust"><span class="shield">⬡</span><div><strong>Доверие начинается с честности</strong><br>DAL сейчас — демонстрационный прототип. Никакие реальные активы не принимаются; сертификация, аудиты и соответствие нормативным требованиям не заявляются до фактической проверки.</div></section>
+</main>
+<footer id="support"><span>© DAL · Концепт криптоплатформы</span><span>Приватность · Безопасность · Прозрачность</span><span>Поддержка: раздел в разработке</span></footer>
+</div>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+<script>
+const notice=document.getElementById('notice');let noticeTimer;
+document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>{notice.textContent=button.dataset.demo;notice.style.display='block';clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice.style.display='none',4500)}));
+</script>
+</body>
+</html>
